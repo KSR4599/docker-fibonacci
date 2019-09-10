@@ -12,7 +12,7 @@ after_success:
   - docker build -t ksreddy4599/fibonacci-client ./client 
   - docker build -t ksreddy4599/fibonacci-nginx ./nginx
   - docker build -t ksreddy4599/fibonacci-server ./server
-  - docker build -t ksreddy4599/multi-worker ./worker
+  - docker build -t ksreddy4599/fibonacci-worker ./worker
 
   #Login to the docker CLI
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
