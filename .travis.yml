@@ -4,20 +4,18 @@ services:
 
 before_install:
   - docker build -t ksreddy4599/react-test -f ./client/Dockerfile.dev ./client
-  
+
 script:
   - docker run -e CI=true ksreddy4599/react-test npm run test ----watchAll=false --coverage
 
 after_success:
-  - docker build -t ksreddy4599/fibonacci-client ./client 
+  - docker build -t ksreddy4599/fibonacci-client ./client
   - docker build -t ksreddy4599/fibonacci-nginx ./nginx
   - docker build -t ksreddy4599/fibonacci-server ./server
   - docker build -t ksreddy4599/fibonacci-worker ./worker
-
-  #Login to the docker CLI
+  # Log in to the docker CLI
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
-
-  #Take these images and push them to the docker hub
+  # Take those images and push them to docker hub
   - docker push ksreddy4599/fibonacci-client
   - docker push ksreddy4599/fibonacci-nginx
   - docker push ksreddy4599/fibonacci-server
@@ -35,4 +33,3 @@ deploy:
   access_key_id: $AWS_ACCESS_KEY
   secret_access_key:
     secure: $AWS_SECRET_KEY
-
