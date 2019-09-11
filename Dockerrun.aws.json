@@ -33,7 +33,7 @@
                     "containerPort": 80
                 }
             ],
-            "links": ["client", "server"],
+            "links": ["fibonacci-client", "fibonacci-server"],
             "memory": 128
 
          }
