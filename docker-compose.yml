@@ -44,4 +44,3 @@ services:
       - /app/node_modules
       - ./worker:/app
 
-      #11
